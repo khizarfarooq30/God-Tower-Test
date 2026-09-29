@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86f9f89d8a19114d8a08515318697d2, type: 3}
+  m_Name: Level03_Blueprint
+  m_EditorClassIdentifier: Assembly-CSharp::LevelBlueprint
+  <Seed>k__BackingField: 3
+  <StartHeight>k__BackingField: 1
+  <JumpCount>k__BackingField: 66
+  <IntroJumps>k__BackingField: 5
+  <OutroJumps>k__BackingField: 4
+  <MaxScore>k__BackingField: 5000
+  <MinGapJumps>k__BackingField: 3
+  <MaxGapJumps>k__BackingField: 6
+  <LedgeWeight>k__BackingField: 2
+  <LedgePairWeight>k__BackingField: 1
+  <ArmWeight>k__BackingField: 3
+  <TwoArmWeight>k__BackingField: 0
+  <PopOutWeight>k__BackingField: 2
+  <PopOutPairWeight>k__BackingField: 2
+  <ArmSpeedRange>k__BackingField: {x: 60, y: 80}
+  <TwoArmSpeedScale>k__BackingField: 0.75
+  <AllowReverseRotation>k__BackingField: 1
+  <PopExtensionDuration>k__BackingField: 0.2
+  <PopRetractionDuration>k__BackingField: 0.25
+  <PopHoldRange>k__BackingField: {x: 0.6, y: 0.8}
+  <PopWaitRange>k__BackingField: {x: 1.3, y: 1.6}
+  <SectionMaterials>k__BackingField:
+  - {fileID: 2100000, guid: d1ab08d26b811814aad7a89b406e4785, type: 2}
+  - {fileID: 2100000, guid: 5db21afd87a95fd4e93d7c01a67ddd52, type: 2}
+  - {fileID: 2100000, guid: 043800e5dceda6c4082fa20d3c533603, type: 2}
+  <TowerTopMargin>k__BackingField: 12

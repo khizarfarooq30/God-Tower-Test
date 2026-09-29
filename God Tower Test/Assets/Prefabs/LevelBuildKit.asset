@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72e92907778e934b8a2621e8e132c96, type: 3}
+  m_Name: LevelBuildKit
+  m_EditorClassIdentifier: Assembly-CSharp::LevelBuildKit
+  <SectionPrefab>k__BackingField: {fileID: 3972555008791577339, guid: 738d974b7422d9346978a56e3a4de929, type: 3}
+  <SectionHeight>k__BackingField: 5
+  <LedgePrefab>k__BackingField: {fileID: 3527091148881402213, guid: a05fd1571b5ed894a84a590accb836f0, type: 3}
+  <ArmPrefab>k__BackingField: {fileID: 7264489625536971487, guid: 10eee7b41a0571c4aa93bdf10e92d253, type: 3}
+  <TwoArmPrefab>k__BackingField: {fileID: 7264489625536971487, guid: 10eee7b41a0571c4aa93bdf10e92d253, type: 3}
+  <PopOutPrefab>k__BackingField: {fileID: 7822977451192480387, guid: 3d3f57b301210fe4ba0f649649b86351, type: 3}
+  <FinishMarkerPrefab>k__BackingField: {fileID: 2513890347792734773, guid: 1e0bed316e0b4604ab9d2a795e328873, type: 3}
+  <FinishMarkerOffset>k__BackingField: -0.8
+  <LedgeOffsetAboveRest>k__BackingField: 1.2
+  <HazardHeightOffset>k__BackingField: 0
