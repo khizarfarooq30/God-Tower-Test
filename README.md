@@ -1,0 +1,92 @@
+[README.md](https://github.com/user-attachments/files/32793365/README.md)
+# God Tower Reference Reproduction
+
+## Unity Version
+Unity 6.3 LTS (6000.3.17f1), Universal Render Pipeline
+
+## Platform
+Android / Portrait (1080 × 1920 reference resolution)
+
+## Controls
+- Hold screen to climb (repeats a climbing jump while held)
+- Swipe left/right to move around the tower
+- Editor debug only: hold Left Mouse / Space to climb, drag mouse or A/D to move
+
+## Levels
+5 playable levels with increasing difficulty (tower height, obstacle density, rotation speed, pop-out timing).
+Obstacle types: static ledges, rotating arms (one or two arms), pop-out blocks.
+Getting hit knocks the climber off, drops them 4 units, and they re-attach and continue.
+A left-side progress bar shows the current climb score (0 → 5000); falling lowers it.
+
+Levels are built in the Editor from `LevelBlueprint` assets using the Level Generator
+(`Tools → God Tower → Build All 5 Levels`). The generated levels are ordinary scene objects and can be edited by hand.
+
+## Webhook
+
+Endpoint (GET or POST, no body required):
+
+```
+http://localhost:56789/bump
+```
+
+Triggers a full-screen boxing-glove barrage (6 gloves, impact flash, camera shake, punch SFX).
+It applies one gameplay hit, and play then continues normally. Requests received while a barrage is playing are acknowledged and ignored.
+
+Editor test (while in Play Mode):
+
+```
+curl -X POST http://localhost:56789/bump
+curl http://localhost:56789/bump
+```
+
+On Windows PowerShell use `curl.exe` instead of `curl`.
+
+Android from PC:
+
+```
+adb reverse tcp:56789 tcp:56789
+```
+
+Then:
+
+```
+curl -X POST http://localhost:56789/bump
+```
+
+ADB port routing is required when triggering the device/emulator listener from the development PC.
+The listener runs on the device (port 56789, all interfaces). `adb reverse` maps a device port to the PC.
+To send a request from the PC to the device, use `adb forward tcp:56789 tcp:56789` and then run the same curl command.
+Depending on the test setup, one or both mappings may be needed.
+The build requires **Internet Access = Require** (Player Settings → Android).
+
+## Assets
+
+| Asset | Source | License |
+|---|---|---|
+| Jammo character (model, materials, animations) | Mix and Jam – https://assetstore.unity.com/packages/package/jammo-character-mix-and-jam-158456
+| Boxing glove sprites (6) | AI-generated – [CHATGPT] | Created for this project |
+| Impact flash sprite | AI-generated – [CHATGPT] | Created for this project |
+| Punch SFX | [My own Library] 
+| Other SFX (climb, grab, hit, fall, pop-out, victory, button) | [My own Library] 
+| TextMeshPro | Unity Technologies (built-in package) | Unity Companion License |
+| Tower, obstacles, particles | Built in Unity from primitives 
+
+## Assumptions
+- The reference shows a fixed camera, so the camera stays on one side of the tower and only follows vertically. The character can move behind the tower.
+- Climbing is a deterministic leap (up plus an outward arc) rather than physics-based, so it can be tuned precisely.
+- Score is the current climb height normalised between the level's start and finish (max 5000). It goes down when the player falls.
+- A hit costs 4 units of height (two jumps) instead of restarting the level. There is no lose state.
+- The webhook barrage counts as one hit regardless of how many gloves connect. If the player is already mid-hit, the visuals still play without stacking another fall.
+- Obstacle layouts are generated in the Editor from a seed with fairness rules (no full-circle blocking, and a fall never lands the player inside another hazard), then saved in the scene.
+
+## Project
+Do not include these folders in the source archive (Unity regenerates them):
+
+```
+Library
+Temp
+Logs
+Build
+```
+
+(Also exclude `obj`, `UserSettings`, and any `.apk` build output.)
